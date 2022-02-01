@@ -1,0 +1,5 @@
+.main-statistics {
+  margin-left: 11rem;
+  height: 100vh;
+  width: calc(100% - 11rem);
+}
