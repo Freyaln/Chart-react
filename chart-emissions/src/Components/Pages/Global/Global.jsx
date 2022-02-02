@@ -11,10 +11,14 @@ const Global = () => {
     const [carbonMonoxidAvg, setCarbonMonoxidAvg] = useState([]);
     const [ozoneAvg, setOzoneAvg] = useState([]);
     const [nitrogenDioxideAvg, setNitrogenDioxideAvg] = useState([]);
+    const [methaneDesc, setMethaneDesc] = useState([]);
+    const [carbonMonoxidDesc, setCarbonMonoxidDesc] = useState([]);
+    const [ozoneDesc, setOzoneDesc] = useState([]);
+    const [nitrogenDioxideDesc, setNitrogenDioxideDesc] = useState([]);
     const [pending, setPending] = useState(false);
 
     const APIConnect = axios.create({
-        timeout: 2000,
+        timeout: 10000,
         validateStatus: function (status) {
             return status >= 200 && status < 300;
         },
@@ -23,13 +27,13 @@ const Global = () => {
     useEffect(() => {
 
         (async () => {
-            const { data: results } = await APIConnect.get(`https://api.v2.emissions-api.org/api/v2/methane/average.json?country=${countryId}&begin=2019-02-10&end=2019-03-11&limit=100&offset=0`, { cache: 'reload' })
+            const { data: results } = await APIConnect.get(`https://api.v2.emissions-api.org/api/v2/methane/average.json?country=${countryId}&begin=2020-02-10&end=2020-03-11&limit=100&offset=0`, { cache: 'reload' })
             setMethaneAvg(results);
             setPending(true);
         })();
 
         (async () => {
-            const { data: results } = await APIConnect.get(`https://api.v2.emissions-api.org/api/v2/carbonmonoxide/average.json?country=${countryId}&begin=2019-02-10&end=2019-03-11&limit=100&offset=0`, { cache: 'reload' })
+            const { data: results } = await APIConnect.get(`https://api.v2.emissions-api.org/api/v2/carbonmonoxide/average.json?country=${countryId}&begin=2020-02-10&end=2020-03-11&limit=100&offset=0`, { cache: 'reload' })
             setCarbonMonoxidAvg(results);
             setPending(true);
         })();
@@ -46,15 +50,32 @@ const Global = () => {
             setPending(true);
         })();
 
+        (async () => {
+            const { data: description } = await APIConnect.get(`https://api.v2.emissions-api.org/api/v2/products.json`, { cache: 'reload' })
+            setMethaneDesc(description[0]);
+            setCarbonMonoxidDesc(description[1])
+            setOzoneDesc(description[2])
+            setNitrogenDioxideDesc(description[3]);
+        })();
 
-    }, [])
 
+    }, [countryId])
+
+    if (pending) {
+        return (
+            <GlobalListGaz
+                methaneAvg={methaneAvg}
+                carbonMonoxidAvg={carbonMonoxidAvg}
+                ozoneAvg={ozoneAvg}
+                nitrogenDioxideAvg={nitrogenDioxideAvg}
+                methaneDesc={methaneDesc}
+                carbonMonoxidDesc={carbonMonoxidDesc}
+                ozoneDesc={ozoneDesc}
+                nitrogenDioxideDesc={nitrogenDioxideDesc} />
+        )
+    }
     return (
-        <GlobalListGaz
-            methaneAvg={methaneAvg}
-            carbonMonoxidAvg={carbonMonoxidAvg}
-            ozoneAvg={ozoneAvg}
-            nitrogenDioxideAvg={nitrogenDioxideAvg} />
+        <p>Loading...</p>
     )
 }
 

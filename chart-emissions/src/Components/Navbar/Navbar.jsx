@@ -16,12 +16,6 @@ const navBarItems = [
         section: 'countries'
     },
     {
-        display: 'Product type',
-        icon: <i className="bx bx-briefcase-alt-2"></i>,
-        to: '/Products',
-        section: 'products'
-    },
-    {
         display: 'Average',
         icon: <i className="bx bx-coin-stack"></i>,
         to: '/Average',

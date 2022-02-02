@@ -8,7 +8,7 @@ const Countries = () => {
     const [pending, setPending] = useState(false);
 
     const APIConnect = axios.create({
-        timeout: 1000,
+        timeout: 10000,
         validateStatus: function (status) {
             return status >= 200 && status < 300;
         },
