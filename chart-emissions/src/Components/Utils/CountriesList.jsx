@@ -30,7 +30,6 @@ const CountriesList = (props) => {
         setCountryListWithoutDouble(countryNameWithoutDouble)
     }, [list])
 
-    console.log(countryName)
 
     if (!props.countryList) {
         return (
@@ -38,7 +37,7 @@ const CountriesList = (props) => {
         )
     }
     return (
-        <main className="main-countries">
+        <section className="main-countries">
 
             <Button
                 id="basic-button"
@@ -64,7 +63,7 @@ const CountriesList = (props) => {
                     </MenuItem>
                 )}
             </Menu>
-        </main>
+        </section>
     )
 }
 

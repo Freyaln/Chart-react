@@ -7,6 +7,11 @@ import './Global.css';
 const Global = () => {
 
     const { countryId } = useParams();
+    const [monthDisplayedMethane, setMonthDisplayedMethane] = useState(1)
+    const [monthDisplayedMonoxid, setMonthDisplayedMonoxid] = useState(1)
+    const [monthDisplayedOzone, setMonthDisplayedOzone] = useState(1)
+    const [monthDisplayedDioxid, setMonthDisplayedDioxid] = useState(1)
+    const [monthDisplayed, setMonthDisplayed] = useState(1)
     const [methaneAvg, setMethaneAvg] = useState([]);
     const [carbonMonoxidAvg, setCarbonMonoxidAvg] = useState([]);
     const [ozoneAvg, setOzoneAvg] = useState([]);
@@ -27,25 +32,25 @@ const Global = () => {
     useEffect(() => {
 
         (async () => {
-            const { data: results } = await APIConnect.get(`https://api.v2.emissions-api.org/api/v2/methane/average.json?country=${countryId}&begin=2020-02-10&end=2020-03-11&limit=100&offset=0`, { cache: 'reload' })
+            const { data: results } = await APIConnect.get(`https://api.v2.emissions-api.org/api/v2/methane/average.json?country=${countryId}&begin=2020-0${monthDisplayedMethane}-01&end=2020-0${monthDisplayedMethane + 1}-01&limit=100&offset=0`, { cache: 'reload' })
             setMethaneAvg(results);
             setPending(true);
         })();
 
         (async () => {
-            const { data: results } = await APIConnect.get(`https://api.v2.emissions-api.org/api/v2/carbonmonoxide/average.json?country=${countryId}&begin=2020-02-10&end=2020-03-11&limit=100&offset=0`, { cache: 'reload' })
+            const { data: results } = await APIConnect.get(`https://api.v2.emissions-api.org/api/v2/carbonmonoxide/average.json?country=${countryId}&begin=2020-0${monthDisplayedMonoxid}-01&end=2020-0${monthDisplayedMonoxid + 1}-01&limit=100&offset=0`, { cache: 'reload' })
             setCarbonMonoxidAvg(results);
             setPending(true);
         })();
 
         (async () => {
-            const { data: results } = await APIConnect.get(`https://api.v2.emissions-api.org/api/v2/ozone/average.json?country=${countryId}&begin=2020-02-10&end=2020-03-11&limit=100&offset=0`, { cache: 'reload' })
+            const { data: results } = await APIConnect.get(`https://api.v2.emissions-api.org/api/v2/ozone/average.json?country=${countryId}&begin=2020-0${monthDisplayedOzone}-01&end=2020-0${monthDisplayedOzone + 1}-01&limit=100&offset=0`, { cache: 'reload' })
             setOzoneAvg(results);
             setPending(true);
         })();
 
         (async () => {
-            const { data: results } = await APIConnect.get(`https://api.v2.emissions-api.org/api/v2/nitrogendioxide/average.json?country=${countryId}&begin=2020-02-10&end=2020-03-11&limit=100&offset=0`, { cache: 'reload' })
+            const { data: results } = await APIConnect.get(`https://api.v2.emissions-api.org/api/v2/nitrogendioxide/average.json?country=${countryId}&begin=2020-0${monthDisplayedDioxid}-01&end=2020-0${monthDisplayedDioxid + 1}-01&limit=100&offset=0`, { cache: 'reload' })
             setNitrogenDioxideAvg(results);
             setPending(true);
         })();
@@ -59,11 +64,21 @@ const Global = () => {
         })();
 
 
-    }, [countryId])
+    }, [countryId, monthDisplayed, monthDisplayedMethane, monthDisplayedMonoxid, monthDisplayedOzone, monthDisplayedDioxid])
 
     if (pending) {
         return (
             <GlobalListGaz
+                setMonthDisplayed={setMonthDisplayed}
+                monthDisplayed={monthDisplayed}
+                setMonthDisplayedMethane={setMonthDisplayedMethane}
+                monthDisplayedMethane={monthDisplayedMethane}
+                monthDisplayedMonoxid={monthDisplayedMonoxid}
+                setMonthDisplayedMonoxid={setMonthDisplayedMonoxid}
+                monthDisplayedOzone={monthDisplayedOzone}
+                setMonthDisplayedOzone={setMonthDisplayedOzone}
+                monthDisplayedDioxid={monthDisplayedDioxid}
+                setMonthDisplayedDioxid={setMonthDisplayedDioxid}
                 methaneAvg={methaneAvg}
                 carbonMonoxidAvg={carbonMonoxidAvg}
                 ozoneAvg={ozoneAvg}

@@ -1,7 +1,6 @@
 .main-countries {
-  margin-left: 11rem;
-  height: 100vh;
-  width: calc(100% - 11rem);
+  height: auto;
+  width: calc(100%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -9,6 +9,7 @@ import Countries from './Components/Pages/Countries/Countries';
 import Average from './Components/Pages/Average/Average';
 import Statistics from './Components/Pages/Statistics/Statistics';
 import Global from './Components/Pages/Global/Global';
+import GlobalListGaz from './Components/Utils/GlobalListGaz';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -17,6 +18,7 @@ ReactDOM.render(
         <Route index element={<Home />} />
         <Route path="/Countries" element={<Countries />} />
         <Route path="/Global/:countryId" element={<Global />} />
+        <Route path='/GloablListGaz/:monthId' element={<GlobalListGaz />} />
         <Route path="/Average" element={<Average />} />
         <Route path="/Statistics" element={<Statistics />} />
       </Route>

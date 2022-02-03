@@ -18,7 +18,7 @@
 }
 
 .main-global h3 {
-  margin-top: 1rem;
+  color: #FFFFFF;
 }
 
 .main-global .main-charts {
@@ -39,8 +39,8 @@
   display: flex;
   gap: 4rem;
   margin: 1rem 1rem 0 1rem;
-  height: 50%;
-  width: 40%;
+  height: 45%;
+  width: inherit;
 }
 
 .main-global .canvas-container .chart {
@@ -48,6 +48,19 @@
       -ms-flex: 0.5;
           flex: 0.5;
   margin: 1rem 0 1rem 0;
+}
+
+.main-global .canvas-container .chart__display {
+  background-color: #262c43;
+}
+
+.main-global .canvas-container .chart__choice {
+  background-color: #262c43;
+  border: #FFFFFF solid 0.1rem;
+  color: #F2F2F2;
+  height: 1.5rem;
+  width: 5rem;
+  margin: 0.5rem 1rem 0.5rem 0.5rem;
 }
 
 .main-global .description {
@@ -60,6 +73,13 @@
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #FFFFFF;
+  margin-top: 3rem;
   width: calc(100% - 11rem);
 }
 

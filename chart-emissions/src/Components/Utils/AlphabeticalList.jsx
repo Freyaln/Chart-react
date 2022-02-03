@@ -3,11 +3,9 @@ import CountriesList from "./CountriesList";
 
 const AlphabeticalList = (props) => {
 
-    console.log(props.countriesList)
 
     const [countryList, setCountryList] = useState([]);
 
-    //const list = Object.entries(props.countriesList)
 
     useEffect(() => {
 

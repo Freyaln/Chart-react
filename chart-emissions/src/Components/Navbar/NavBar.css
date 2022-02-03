@@ -1,10 +1,13 @@
 .navbar {
   position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100%;
   width: 11rem;
-  background-color: #FFFFFF;
+  background-color: #262c43;
 }
 
 .navbar-menu {
@@ -32,7 +35,7 @@
   padding: 1rem 0 1rem 1rem;
   font-size: 1rem;
   font-weight: 500;
-  color: #555555;
+  color: #FFFFFF;
   -webkit-transition: color 0.3s ease-in-out;
   transition: color 0.3s ease-in-out;
 }

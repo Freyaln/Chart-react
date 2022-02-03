@@ -19,6 +19,7 @@
 
 .main-statistics h3 {
   margin-top: 1rem;
+  color: #FFFFFF;
 }
 
 .main-statistics .main-charts {
@@ -39,8 +40,8 @@
   display: flex;
   gap: 4rem;
   margin: 1rem 1rem 0 1rem;
-  height: 50%;
-  width: 40%;
+  height: 47%;
+  width: 100%;
 }
 
 .main-statistics .canvas-container .chart {
@@ -48,4 +49,16 @@
       -ms-flex: 0.5;
           flex: 0.5;
   margin: 1rem 0 1rem 0;
+}
+
+.main-statistics .canvas-container .chart__display {
+  background-color: #262c43;
+}
+
+.main-statistics .canvas-container .chart__choice {
+  background-color: #FFFFFF;
+  border: none;
+  height: 1.5rem;
+  width: 5rem;
+  margin: 0.5rem 1rem 0.5rem 25%;
 }

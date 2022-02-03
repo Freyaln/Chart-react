@@ -1,10 +1,11 @@
 .navbar {
     position: fixed;
+    display: flex;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 100%;
     width: 11rem;
-    background-color: #FFFFFF;
+    background-color: rgb(38,44,67);
 
     &-menu {
         display: flex;
@@ -19,7 +20,7 @@
             padding: 1rem 0 1rem 1rem;
             font-size: 1rem;
             font-weight: 500;
-            color: #555555;
+            color: #FFFFFF;
             transition: color 0.3s ease-in-out;
 
             &:hover {

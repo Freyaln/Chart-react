@@ -8,6 +8,10 @@ const StatisticsCharts = (props) => {
 
 
     const { countryId } = useParams();
+    const [typeOfChartMethane, setTypeOfChartMethane] = useState('line');
+    const [typeOfChartMonoxid, setTypeOfChartMonoxid] = useState('line');
+    const [typeOfChartOzone, setTypeOfChartOzone] = useState('line');
+    const [typeOfChartNitrogenDioxid, setTypeOfChartNitrogenDioxid] = useState('line');
 
     const methane = props.methane;
     const carbonMonoxid = props.carbonMonoxid
@@ -41,14 +45,16 @@ const StatisticsCharts = (props) => {
             {
                 label: 'Minimum January 2020',
                 data: methaneMin.map((item) => item),
-                fill: 'yellow',
-                backgroundColor: 'green',
+                fill: true,
+                borderColor: 'rgb(220, 192, 192)',
+                backgroundColor: 'rgba(220, 192, 192, 0.4)'
             },
             {
                 label: 'Maximum January 2020',
                 data: methaneMax.map((item) => item),
-                fill: 'yellow',
-                backgroundColor: 'red',
+                fill: true,
+                borderColor: 'rgb(255, 51, 51)',
+                backgroundColor: 'rgba(255, 51, 51, 0.4)'
             }
         ]
     }
@@ -60,20 +66,22 @@ const StatisticsCharts = (props) => {
     }
 
 
-    const carbonData = {
+    const monoxidData = {
         labels: carbonDay,
         datasets: [
             {
                 label: 'Minimum May 2020',
                 data: carbonMin.map((item) => item),
-                fill: 'yellow',
-                backgroundColor: 'rgb(75, 192, 192)',
+                fill: true,
+                borderColor: 'rgb(75, 192, 192)',
+                backgroundColor: 'rgba(75, 192, 192, 0.4)',
             },
             {
                 label: 'Maximum May 2020',
                 data: carbonMax.map((item) => item),
-                fill: 'yellow',
-                backgroundColor: 'rgb(220, 70, 70)',
+                fill: true,
+                borderColor: 'rgb(0, 204, 102)',
+                backgroundColor: 'rgba(0, 204, 102, 0.4)',
             }
         ]
     }
@@ -91,14 +99,16 @@ const StatisticsCharts = (props) => {
             {
                 label: 'Minimum January 2020',
                 data: ozoneMin.map((item) => item),
-                fill: 'yellow',
-                backgroundColor: 'green',
+                fill: true,
+                borderColor: 'rgb(162, 75, 192)',
+                backgroundColor: 'rgba(162, 75, 192, 0.4)'
             },
             {
                 label: 'Maximum January 2020',
                 data: ozoneMax.map((item) => item),
-                fill: 'yellow',
-                backgroundColor: 'red',
+                fill: true,
+                borderColor: 'rgb(255, 128, 0)',
+                backgroundColor: 'rgba(255, 128, 0, 0.4)',
             }
         ]
     }
@@ -110,26 +120,69 @@ const StatisticsCharts = (props) => {
     }
 
 
-    const nitrogenData = {
+    const nitrogenDioxidData = {
         labels: nitrogenDay,
         datasets: [
             {
                 label: 'Minimum May 2020',
                 data: nitrogenMin.map((item) => item),
-                fill: 'yellow',
-                backgroundColor: 'green',
+                fill: true,
+                borderColor: 'rgb(204, 204, 0)',
+                backgroundColor: 'rgba(204, 204, 0, 0.4)',
             },
             {
                 label: 'Maximum May 2020',
                 data: nitrogenMax.map((item) => item),
-                fill: 'yellow',
-                backgroundColor: 'red',
+                fill: true,
+                borderColor: 'rgb(204, 0, 102)',
+                backgroundColor: 'rgba(204, 0, 102, 0.4)',
             }
         ]
     }
 
-    const options = {
-        maintainAspectRatio: false
+    const optionsMethane = {
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                type: 'linear',
+                min: 1550,
+                max: 2100
+            }
+        }
+    }
+
+    const optionsMonoxid = {
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                type: 'linear',
+                min: -100,
+                max: 40
+            }
+        }
+    }
+
+    const optionsOzone = {
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                type: 'linear',
+                min: 0.05,
+                max: 0.3
+            }
+        }
+    }
+
+
+    const optionsNitrogen = {
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                type: 'linear',
+                min: -0.0002,
+                max: 0.0010
+            }
+        }
     }
     return (
 
@@ -139,12 +192,24 @@ const StatisticsCharts = (props) => {
             <div className='main-charts'>
                 <article className="canvas-container">
                     <div className="chart">
-                        <Line data={methaneData} options={options} />
-                        <Line data={carbonData} options={options} />
+                        {typeOfChartMethane === 'line' && <Line data={methaneData} options={optionsMethane} className='chart__display' />}
+                        {typeOfChartMethane === 'bar' && <Bar data={methaneData} options={optionsMethane} className='chart__display' />}
+                        <button onClick={() => { setTypeOfChartMethane('bar') }} className='chart__choice'>Bar</button>
+                        <button onClick={() => { setTypeOfChartMethane('line') }} className='chart__choice'>Line</button>
+                        {typeOfChartMonoxid === 'line' && <Line data={monoxidData} options={optionsMonoxid} className='chart__display' />}
+                        {typeOfChartMonoxid === 'bar' && <Bar data={monoxidData} options={optionsMonoxid} className='chart__display' />}
+                        <button onClick={() => { setTypeOfChartMonoxid('bar') }} className='chart__choice'>Bar</button>
+                        <button onClick={() => { setTypeOfChartMonoxid('line') }} className='chart__choice'>Line</button>
                     </div>
-                    <div className='chart'>
-                        <Line data={ozoneData} options={options} />
-                        <Line data={nitrogenData} options={options} />
+                    <div className="chart">
+                        {typeOfChartOzone === 'line' && <Line data={ozoneData} options={optionsOzone} className='chart__display' />}
+                        {typeOfChartOzone === 'bar' && <Bar data={ozoneData} options={optionsOzone} className='chart__display' />}
+                        <button onClick={() => { setTypeOfChartOzone('bar') }} className='chart__choice'>Bar</button>
+                        <button onClick={() => { setTypeOfChartOzone('line') }} className='chart__choice'>Line</button>
+                        {typeOfChartNitrogenDioxid === 'line' && <Line data={nitrogenDioxidData} options={optionsNitrogen} className='chart__display' />}
+                        {typeOfChartNitrogenDioxid === 'bar' && <Bar data={nitrogenDioxidData} options={optionsNitrogen} className='chart__display' />}
+                        <button onClick={() => { setTypeOfChartNitrogenDioxid('bar') }} className='chart__choice'>Bar</button>
+                        <button onClick={() => { setTypeOfChartNitrogenDioxid('line') }} className='chart__choice'>Line</button>
                     </div>
                 </article>
             </div>
