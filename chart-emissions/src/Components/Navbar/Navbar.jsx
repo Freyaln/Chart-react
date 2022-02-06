@@ -10,16 +10,10 @@ const navBarItems = [
         section: ''
     },
     {
-        display: 'Countries',
+        display: 'Average by Country',
         icon: <i className="bx bx-world"></i>,
         to: '/Countries',
         section: 'countries'
-    },
-    {
-        display: 'Average',
-        icon: <i className="bx bx-coin-stack"></i>,
-        to: '/Average',
-        section: 'average'
     },
     {
         display: 'Statistics',

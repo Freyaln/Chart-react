@@ -75,16 +75,18 @@ const GlobalListGaz = (props) => {
         }
     }
 
-    function decrementMonth() {
-        for (let i = 1; i <= 12; i++) {
-            if (props.monthDisplayed >= 12)
+    function decrementMonthMethane() {
+        for (let i = 12; i > 1; i--) {
+            if (props.monthDisplayed > 1) {
                 props.setMonthDisplayed(props.monthDisplayed - 1);
+            }
             if (props.monthDisplayed === 1) {
                 return;
             }
         }
     }
 
+    console.log(props.monthDisplayedMethane)
     for (let i = 0; i < methaneDatas.length; i++) {
         methaneAvg.push(methaneDatas[i].average);
         methaneLabelsStart.push(methaneDatas[i].start);
@@ -207,13 +209,13 @@ const GlobalListGaz = (props) => {
                         {typeOfChartMethane === 'bar' && <Bar data={methaneData} options={optionsMethane} className='chart__display' />}
                         <button onClick={() => { setTypeOfChartMethane('bar') }} className='chart__choice'>Bar</button>
                         <button onClick={() => { setTypeOfChartMethane('line') }} className='chart__choice'>Line</button>
-                        <button onClick={decrementMonth} className='chart__choice'>Prev month</button>
+                        <button onClick={decrementMonthMethane} className='chart__choice'>Prev month</button>
                         <button onClick={incrementMonthMethane} className='chart__choice'>Next month</button>
                         {typeOfChartMonoxid === 'line' && <Line data={monoxidData} options={optionsMonoxid} className='chart__display' />}
                         {typeOfChartMonoxid === 'bar' && <Bar data={monoxidData} options={optionsMonoxid} className='chart__display' />}
                         <button onClick={() => { setTypeOfChartMonoxid('bar') }} className='chart__choice'>Bar</button>
                         <button onClick={() => { setTypeOfChartMonoxid('line') }} className='chart__choice'>Line</button>
-                        <button onClick={decrementMonth} className='chart__choice'>Prev month</button>
+                        {/* <button onClick={decrementMonth} className='chart__choice'>Prev month</button> */}
                         <button onClick={incrementMonthMonoxid} className='chart__choice'>Next month</button>
                     </div>
                     <div className="chart">
@@ -221,13 +223,13 @@ const GlobalListGaz = (props) => {
                         {typeOfChartOzone === 'bar' && <Bar data={ozoneData} options={optionsOzone} className='chart__display' />}
                         <button onClick={() => { setTypeOfChartOzone('bar') }} className='chart__choice'>Bar</button>
                         <button onClick={() => { setTypeOfChartOzone('line') }} className='chart__choice'>Line</button>
-                        <button onClick={decrementMonth} className='chart__choice'>Prev month</button>
+                        {/* <button onClick={decrementMonth} className='chart__choice'>Prev month</button> */}
                         <button onClick={incrementMonthOzone} className='chart__choice'>Next month</button>
                         {typeOfChartNitrogenDioxid === 'line' && <Line data={nitrogenDioxidData} options={options} className='chart__display' />}
                         {typeOfChartNitrogenDioxid === 'bar' && <Bar data={nitrogenDioxidData} options={options} className='chart__display' />}
                         <button onClick={() => { setTypeOfChartNitrogenDioxid('bar') }} className='chart__choice'>Bar</button>
                         <button onClick={() => { setTypeOfChartNitrogenDioxid('line') }} className='chart__choice'>Line</button>
-                        <button onClick={decrementMonth} className='chart__choice'>Prev month</button>
+                        {/* <button onClick={decrementMonth} className='chart__choice'>Prev month</button> */}
                         <button onClick={incrementMonthDioxid} className='chart__choice'>Next month</button>
                     </div>
                 </article>

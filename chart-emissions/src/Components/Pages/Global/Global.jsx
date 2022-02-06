@@ -73,12 +73,12 @@ const Global = () => {
                 monthDisplayed={monthDisplayed}
                 setMonthDisplayedMethane={setMonthDisplayedMethane}
                 monthDisplayedMethane={monthDisplayedMethane}
-                monthDisplayedMonoxid={monthDisplayedMonoxid}
                 setMonthDisplayedMonoxid={setMonthDisplayedMonoxid}
-                monthDisplayedOzone={monthDisplayedOzone}
+                monthDisplayedMonoxid={monthDisplayedMonoxid}
                 setMonthDisplayedOzone={setMonthDisplayedOzone}
-                monthDisplayedDioxid={monthDisplayedDioxid}
+                monthDisplayedOzone={monthDisplayedOzone}
                 setMonthDisplayedDioxid={setMonthDisplayedDioxid}
+                monthDisplayedDioxid={monthDisplayedDioxid}
                 methaneAvg={methaneAvg}
                 carbonMonoxidAvg={carbonMonoxidAvg}
                 ozoneAvg={ozoneAvg}

@@ -6,8 +6,6 @@ import Chart from 'chart.js/auto'
 const StatisticsCharts = (props) => {
 
 
-
-    const { countryId } = useParams();
     const [typeOfChartMethane, setTypeOfChartMethane] = useState('line');
     const [typeOfChartMonoxid, setTypeOfChartMonoxid] = useState('line');
     const [typeOfChartOzone, setTypeOfChartOzone] = useState('line');

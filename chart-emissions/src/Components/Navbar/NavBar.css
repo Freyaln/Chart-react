@@ -1,8 +1,5 @@
 .navbar {
   position: fixed;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   top: 0;
   left: 0;
   height: 100%;
